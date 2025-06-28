@@ -7,9 +7,9 @@
 -- - Stored Procedures
 -- - Functions
 -- - Views
--- - Backup/Recovery System
+-- - Backup/Recovery System something modified here on the local machine 
 -- =============================================
-here i changed on the remote repository
+
 -- 1. DATABASE SETUP
 DROP DATABASE IF EXISTS hotel;
 CREATE DATABASE hotel;
