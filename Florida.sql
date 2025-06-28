@@ -9,7 +9,7 @@
 -- - Views
 -- - Backup/Recovery System
 -- =============================================
-
+here i changed on the remote repository
 -- 1. DATABASE SETUP
 DROP DATABASE IF EXISTS hotel;
 CREATE DATABASE hotel;
