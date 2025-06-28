@@ -1,12 +1,6 @@
 -- =============================================
 -- HOTEL MANAGEMENT DATABASE SYSTEM
--- Complete Implementation with:
--- - Optimized Schema
--- - Comprehensive Indexing
--- - Triggers
--- - Stored Procedures
--- - Functions
--- - Views
+
 -- - Backup/Recovery System something modified here on the local machine 
 -- =============================================
 
