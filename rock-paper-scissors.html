@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>game</title>
+  <style>
+    body {
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+    }
+h2,h1{
+  margin: 0;
+}
+    .container {
+
+      margin-top: 20px;
+      padding: 10px;
+      border: 2px solid rgb(63, 62, 62);
+      display: flex;
+      flex-direction: column;
+      justify-content: top;
+      align-items: center;
+      box-shadow: 3px 2px 4px rgba(152, 169, 195, 0.5);
+      height: 500px;
+      width: 600px;
+      background-color: rgb(240, 249, 249);
+      gap: 20px;
+
+
+    }
+
+    .btn-container {
+      display: flex;
+      gap: 25px;
+
+    }
+
+    .choice {
+
+      display: flex;
+      gap: 30px;
+      margin-bottom: 10px;
+
+
+    }
+
+    .playerchoice {
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .computer-choice {
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #result {
+
+
+      border: 1px solid red;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 30px;
+      font-style: italic;
+      color: rgb(62, 61, 61);
+      padding: 10px;
+    }
+    #score{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap:8px;
+
+
+
+    }
+    .other-container{
+      display: flex;
+      gap: 20px;
+    }
+    #computer-choice,#player-choice{
+
+font-size: 40px;
+
+    }
+   #score1, #result,.btn{
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-size: 30px;
+background-color:green;
+color:rgb(231, 229, 229);
+border: none;
+border-radius: 8px;
+    }
+     #score1,#result{
+color:rgb(46, 46, 46);
+background-color:white;
+    }
+    .score{
+
+font-size: 25px;
+font-family: Arial, Helvetica, sans-serif;
+font-style: italic;
+color: rgb(135, 135, 135);
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Rock Paper Scissors Game</h1>
+    <div class="btn-container">
+      <button id="rock" class="btn">✊ Rock</button>
+      <button id="paper" class="btn">✋ Paper</button>
+      <button id="scissors" class="btn">✌️ Scissors</button>
+    </div>
+    <div id="result">You Win! </div>
+    <div class="choice">
+      <div class="playerchoice">
+        <h2>Your Choice</h2>
+        <p id="player-choice"></p>
+
+      </div>
+      <div class="computer-choice">
+        <h2>Computer Choice</h2>
+        <p id="computer-choice"></p>
+
+      </div>
+
+    </div>
+
+    <div id="score">
+      <div id="score1"> Scores </div>
+      <div class="other-container"> <div id="your-score"><p class="score">You won : <span id="your-wins">0</span></p></div>
+      <div id="computer-score"> <p class="score">Computer won :  <span id="computer-wins">0</span>   </p></div>
+      <div id="no-tie"> <p class="score">Ties :  <span id="ties">0</span>   </p></div></div>
+      
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <script>
+
+    let playerMove;
+    let computerMove;
+    let playerScore = 0;
+    let computerScore = 0;
+    let tieScore=0;
+    let randomNumber;
+    console.log(randomNumber);
+    //DOM objects
+    const rockBtn = document.getElementById("rock");
+    const paperBtn = document.getElementById("paper");
+    const scissorsBtn = document.getElementById("scissors");
+
+    const gameResult=document.getElementById("result");
+    const playerChoice=document.getElementById("player-choice");
+    const computerChoice=document.getElementById("computer-choice");
+    const playerWon=document.getElementById("your-wins");
+    const computerWon=document.getElementById("computer-wins");
+    const gameTie=document.getElementById("ties");
+    
+    //add event listeners
+    rockBtn.addEventListener("click", function () {
+      playerMove = "✊";
+      randomNumber = 0 + (Math.ceil(Math.random() * 3));
+      console.log(randomNumber);
+      if (randomNumber === 1) { computerMove = "✊"; }
+      else if (randomNumber === 2) {
+        computerMove = "✋";
+
+      }
+      else {
+
+        computerMove = "✌️";
+      }
+      checkRockResult();
+
+    });
+    paperBtn.addEventListener("click", function () {
+      playerMove = "✋";
+      randomNumber = 1 + (Math.floor(Math.random() * 3));
+      console.log(randomNumber);
+      if (randomNumber === 1) { computerMove = "✊"; }
+      else if (randomNumber === 2) {
+        computerMove = "✋";
+
+      }
+      else {
+
+        computerMove = "✌️";
+      }
+      checkPaperResult();
+    });
+    scissorsBtn.addEventListener("click", function () {
+      playerMove = "✌️";
+      randomNumber = 1 + (Math.floor(Math.random() * 3));
+      console.log(randomNumber);
+      if (randomNumber === 1) { computerMove = "✊"; }
+      else if (randomNumber === 2) {
+        computerMove = "✋";
+
+      }
+      else {
+
+        computerMove = "✌️";
+      }
+      checkScissorsResult();
+    });
+
+    //winning conditions
+
+
+    //rock
+    function checkRockResult() {
+      if (playerMove === "✊" && computerMove === "✌️") {
+
+        playerScore++;
+       
+      playerChoice.innerHTML=playerMove;
+      computerChoice.innerHTML=computerMove;
+      gameResult.innerHTML='You Won!!';
+      playerWon.innerHTML=playerScore;
+      }
+      else if (playerMove === "✊" && computerMove === "✋") {
+        computerScore++;
+       
+
+ playerChoice.innerHTML=playerMove;
+      computerChoice.innerHTML=computerMove;
+      gameResult.innerHTML='You Lost!!';
+      computerWon.innerHTML=computerScore;
+      }
+      else if (playerMove === "✊" && computerMove === "✊") {
+
+     
+       playerChoice.innerHTML=playerMove;
+      computerChoice.innerHTML=computerMove;
+      gameResult.innerHTML='Tie!!';
+       tieScore++;
+      gameTie.innerHTML=tieScore;
+      }
+    }
+    //paper 
+    function checkPaperResult() {
+      if (playerMove === "✋" && computerMove === "✊") {
+
+        playerScore++;
+        
+       playerChoice.innerHTML=playerMove;
+      computerChoice.innerHTML=computerMove;
+      gameResult.innerHTML='You Won!!';
+       playerWon.innerHTML=playerScore;
+      }
+      else if (playerMove === "✋" && computerMove === "✌️") {
+        computerScore++;
+        
+playerChoice.innerHTML=playerMove;
+      computerChoice.innerHTML=computerMove;
+      gameResult.innerHTML='You Lost!!';
+        computerWon.innerHTML=computerScore;
+      }
+      else if (playerMove === "✋" && computerMove === "✋") {
+
+        playerChoice.innerHTML=playerMove;
+      computerChoice.innerHTML=computerMove;
+      gameResult.innerHTML='Tie!!';
+       tieScore++;
+      gameTie.innerHTML=tieScore;
+      }
+    }
+    //scissors
+    function checkScissorsResult() {
+      if (playerMove === "✌️" && computerMove === "✋") {
+
+        playerScore++;
+        
+       playerChoice.innerHTML=playerMove;
+      computerChoice.innerHTML=computerMove;
+      gameResult.innerHTML='You Won!!';
+       playerWon.innerHTML=playerScore;
+      }
+      else if (playerMove === "✌️" && computerMove === "✊") {
+        computerScore++;
+        
+playerChoice.innerHTML=playerMove;
+      computerChoice.innerHTML=computerMove;
+      gameResult.innerHTML='You Lost!!';
+        computerWon.innerHTML=computerScore;
+      }
+      else if (playerMove === "✌️" && computerMove === "✌️") {
+
+        playerChoice.innerHTML=playerMove;
+      computerChoice.innerHTML=computerMove;
+      gameResult.innerHTML='Tie!!';
+       tieScore++;
+      gameTie.innerHTML=tieScore;
+      }
+    }
+  </script>
+</body>
+
+</html>
